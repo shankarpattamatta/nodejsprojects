@@ -1,0 +1,10 @@
+This is the documentation for this project 
+pre-requisites:
+Init the npm 
+1.type npm init on the terminl.
+the above command would creare package.json which is a configuration file.
+2. npm - validator  on terminal -- This would install a npm package.npm i validator
+Go look at the node_modules section  you'll see the corresponding npm package getting installed.
+
+//This is a note taking app .
+//Depending whehter user wishes to add /remove /update the programme is supposed to the needful.
