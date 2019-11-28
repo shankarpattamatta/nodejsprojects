@@ -1,6 +1,7 @@
 const cf = require('./utils.js');
 const yargs= require('yargs')
 const fs = require('fs');
+const notes = require("./notes.js");
 
 console.log("Args from process "+process.argv);
 console.log("Args from yargs"+yargs.argv);
@@ -23,14 +24,10 @@ yargs.command({
    }
  },
  handler:function(argv){
-    //do whaterver you want to do with the arguments
-    console.log('Title:'+ argv.title);
-    console.log('body-'+argv.body)
+    console.log("Im in handler");
+    notes.addNote(argv.title,argv.body);
  }
 })
-
-
-
 yargs.command({
     command: 'remove',
     describe: 'remove a  Note to the notes application',
@@ -57,34 +54,3 @@ yargs.command({
     }
 })
 console.log(yargs.argv);
-/*
-console.log("Enter the name of the notes application");
- const title =process.argv[2];
- console.log("Enter 1 to add to the notes and 2 to remove from notes ");
- if(process.argv[3]===1)
- {
-
-     addNotes();
-
- }
- else if (process.argv[3]===0)
- {
-     removeNotes();
-
- }
- else{
-     console.log("Invalid Input");
-
- }
-
- function addNotes(data){
-    fs.appendFileSync(sampletext,data);
-
- }
-
-
- function removeNotes(data)
- {
-
- }
- */
