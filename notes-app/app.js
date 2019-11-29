@@ -1,4 +1,5 @@
 const cf = require('./utils.js');
+const notes=require('./notes.js')
 const yargs= require('yargs')
 const fs = require('fs');
 
@@ -24,8 +25,8 @@ yargs.command({
  },
  handler:function(argv){
     //do whaterver you want to do with the arguments
-    console.log('Title:'+ argv.title);
-    console.log('body-'+argv.body)
+    notes.addNote(argv.title,argv.body);
+    console.log('Out of program');
  }
 })
 
@@ -34,18 +35,27 @@ yargs.command({
 yargs.command({
     command: 'remove',
     describe: 'remove a  Note to the notes application',
-    handler: function()
-    {
-        console.log('removing a  note');
-    }
-})
+    builder:{
+        // build  the arguments here 
+        title:{
+         describe: "This is the title of the notes",
+         type: "String",
+         demandOption: true
+        }
+      },
+      handler:function(argv){
+         //do whaterver you want to do with the arguments
+         notes.removeNote(argv.title);
+         console.log('Out of remove program');
+      }
+     })
 
 yargs.command({
 command: 'list',
 describe: 'List all the Items',
-handler: function()
+handler: function(argv)
 {
-    console.log('This is the list function');
+    notes.listNotes();
 }
 })
 
