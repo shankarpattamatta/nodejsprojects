@@ -62,8 +62,9 @@ handler: function(argv)
 yargs.command({
     command:'read',
     describe: 'Read the list of items',
-    handler: function(){
-        console.log('This is the read function')
+    handler: function(argv){
+        console.log('This is the read function');
+        notes.readNote(argv.title);
     }
 })
 console.log(yargs.argv);

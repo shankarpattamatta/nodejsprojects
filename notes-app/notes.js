@@ -47,7 +47,14 @@ const addNote=function(title,body)
     const duplicateArray = notes.filter(function(note){
         return (note.title===title);
     })
-    if(duplicateArray.length===0){
+
+    //This returns as soon as it finds a duplicate ..however it returns the value not an array
+    const duplicatevalue = notes.find(function(note){
+        return note.title===title
+    });
+
+
+    if(duplicatevalue===undefined){
     notes.push({
         "title":title,
         "body":body
@@ -98,4 +105,20 @@ const removeNote = function(title)
     }
 
 }
-module.exports = {addNote,getNotes,removeNote,listNotes};
+const readNote = function(title){
+    let dataBuffer = loadNotes();
+    //find if it exixts 
+    
+    const value =dataBuffer.find(function(element){
+        return element.title===title;
+    });
+    if(value!=undefined){
+        
+        console.log('Here is the elmenet:'+value.title +','+value.body);
+    }
+    else{
+        console.log('Element mnot found!!');
+    }
+
+}
+module.exports = {addNote,getNotes,removeNote,listNotes,readNote};
