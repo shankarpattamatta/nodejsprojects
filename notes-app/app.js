@@ -2,7 +2,7 @@ const cf = require('./utils.js');
 const notes=require('./notes.js')
 const yargs= require('yargs')
 const fs = require('fs');
-const notes = require("./notes.js");
+
 
 console.log("Args from process "+process.argv);
 console.log("Args from yargs"+yargs.argv);
